@@ -21,7 +21,7 @@
 
 <div class='flex gap-3'>
     @forelse ($event->tags as $tag)
-    <a class='btn' href="{{route('tags.index', ['tag' => $tag])}}">{{$tag->title}}</a>
+    <a class='btn' href="{{route('tags.show', ['tag' => $tag])}}">{{$tag->title}}</a>
     @empty
     <div>
         <h1 class='font-bold'>It's nothing here, yet...</h1>
