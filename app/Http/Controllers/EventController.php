@@ -43,7 +43,12 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $event->load(['comments', 'tags']);
+        $event->load([
+            'comments' => function ($query) {
+                $query->orderBy('created_at', 'desc');
+            },
+            'tags'
+        ]);
 
         return view('events.show', [
             'event' => $event,

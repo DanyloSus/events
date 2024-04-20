@@ -20,7 +20,7 @@
     }
 
 </style>
-<body class='overflow-x-hidden'>
+<body class='overflow-x-hidden mb-10'>
     <header class="px-8 pt-2 flex justify-between items-center gap-3 w-screen border-b border-grey">
         <h1 class="flex gap-3 items-center text-3xl font-bold"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" height="48px" width="48px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve">
                 <g>
