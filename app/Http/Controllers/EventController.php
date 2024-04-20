@@ -36,9 +36,13 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Event $event)
     {
-        //
+        $event->load(['comments', 'tags']);
+
+        return view('events.show', [
+            'event' => $event,
+        ]);
     }
 
     /**
