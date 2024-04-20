@@ -38,7 +38,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        $events = $tag->events()->paginate(10);
+        $events = $tag->events()->paginate(5);
 
         return view('tags.show', [
             'tag' => $tag,
