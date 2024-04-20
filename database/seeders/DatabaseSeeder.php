@@ -7,16 +7,20 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
+
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $tags = \App\Models\Tag::factory()->count(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\Event::factory(100)->create()->each(function ($event) use ($tags) {
+            $numComments = random_int(1, 5);
+            $numTags = random_int(0, 10);
+
+            \App\Models\Comment::factory()->count($numComments)->for($event)->create();
+
+            $randomTags = $tags->shuffle()->take($numTags);
+
+            $event->tags()->attach($randomTags);
+        });
     }
 }
