@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Event::factory(100)->create()->each(function ($event) use ($tags) {
             $numComments = random_int(1, 5);
-            $numTags = random_int(0, 10);
+            $numTags = random_int(1, 9);
 
             \App\Models\Comment::factory()->count($numComments)->for($event)->create();
 
