@@ -40,6 +40,9 @@
         </nav>
     </header>
     <main class='mx-8 mt-5 flex flex-col items-center text-center'>
+        @if (session()->has('success'))
+        <div class='my-3 font-bold text-green-500'>{{session('success')}}</div>
+        @endif
         @yield('content')
     </main>
 </body>

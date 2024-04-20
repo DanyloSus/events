@@ -3,6 +3,8 @@
 @section('content')
 <h1 class='font-bold text-4xl'>Events</h1>
 
+<a href='{{ route('events.create') }}' class='btn mt-4'>Create new</a>
+
 <ul class='flex flex-col gap-1 my-4'>
     @forelse ($events as $event)
     <li><a class='hover:underline' href='{{ route('events.show', ['event' => $event]) }}'>{{$event->title}}</a></li>

@@ -11,10 +11,11 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tag_events', function (Blueprint $table) {
-            $table->foreignId('tag_id')->constrained();
-            $table->foreignId('event_id')->constrained();
+            $table->foreignId('tag_id')->constrained()->onDelete('cascade');
+            $table->foreignId('event_id')->constrained()->onDelete('cascade');
         });
     }
+
 
     /**
      * Reverse the migrations.

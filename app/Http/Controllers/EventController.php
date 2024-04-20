@@ -13,7 +13,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy("updated_at", "desc")->paginate(10);
+        $events = Event::orderBy("start_time", "desc")->paginate(10);
 
         return view('events.index', ['events' => $events]);
     }
@@ -53,24 +53,36 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Event $event)
     {
-        //
+        return view('events.edit', [
+            'event' => $event,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EventRequest $request, Event $event)
     {
-        //
+        $event->update($request->validated());
+
+        return redirect()->route('events.show', [
+            'event' => $event
+        ])->with('success', 'Event created!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Event $event)
     {
-        //
+        $event->comments()->delete();
+        $event->tags()->detach();
+
+        $event->delete();
+
+        return redirect()->route('events.index')->with('success', 'Event deleted!');
     }
+
 }
