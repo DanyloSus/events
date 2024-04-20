@@ -10,7 +10,13 @@
     input,
     textarea,
     .btn {
-        @apply border border-grey rounded-xl;
+        border: grey 1px solid;
+        border-radius: 8px;
+        padding: 2px 8px;
+
+        &:hover {
+            border-color: black;
+        }
     }
 
 </style>
@@ -28,12 +34,12 @@
                     </g>
                 </g>
             </svg> Hobby Events</h1>
-        <nav>
+        <nav class='flex gap-3'>
             <a href="{{route('events.index')}}">Events</a>
             <a href="{{route('tags.index')}}">Tags</a>
         </nav>
     </header>
-    <main class='mx-8 mt-5 flex flex-col items-center'>
+    <main class='mx-8 mt-5 flex flex-col items-center text-center'>
         @yield('content')
     </main>
 </body>
