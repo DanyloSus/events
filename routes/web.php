@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('events', EventController::class);
+Route::resource('events', EventController::class)->only(['index', 'show']);
+
+Route::resource('tags', TagController::class)->only(['index', 'show']);

@@ -5,9 +5,9 @@
 <br />
 <div class='flex gap-3'>
     @forelse ($event->tags as $tag)
-    <a href=''>{{$tag->title}}</a>
+    <a href="{{route('tags.index', ['tag' => $tag])}}">{{$tag->title}}</a>
     @empty
-
+    <h1>It's nothing here, yet...</h1>
     @endforelse
 </div>
 <br />

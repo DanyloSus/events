@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Models\Event;
+use \App\Models\Tag;
 
-class EventController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $events = Event::orderBy("updated_at", "desc")->paginate(10);
+        $tags = Tag::orderBy("created_at", "desc")->paginate(10);
 
-        return view('events.index', ['events' => $events]);
+        return view('tags.index', ['tags' => $tags]);
     }
 
     /**
@@ -36,13 +36,9 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Event $event)
+    public function show(string $id)
     {
-        $event->load(['comments', 'tags']);
-
-        return view('events.show', [
-            'event' => $event,
-        ]);
+        //
     }
 
     /**
