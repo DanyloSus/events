@@ -36,9 +36,14 @@ class TagController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Tag $tag)
     {
-        //
+        $events = $tag->events()->paginate(10);
+
+        return view('tags.show', [
+            'tag' => $tag,
+            'events' => $events,
+        ]);
     }
 
     /**
