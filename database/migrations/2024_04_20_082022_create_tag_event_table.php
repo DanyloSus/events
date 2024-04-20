@@ -11,9 +11,6 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tag_event', function (Blueprint $table) {
-            $table->unsignedBigInteger('tag_id');
-            $table->unsignedBigInteger('event_id');
-
             $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
             $table->foreignId('event_id')->constrained()->cascadeOnDelete();
         });
