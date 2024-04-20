@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 use \App\Models\Event;
 
@@ -22,15 +23,19 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('events.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        //
+        $event = Event::create($request->validated());
+
+        return redirect()->route('events.show', [
+            'event' => $event
+        ])->with('success', 'Event created!');
     }
 
     /**

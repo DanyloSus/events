@@ -19,6 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('events', EventController::class)->only(['index', 'show']);
+Route::resource('events', EventController::class);
 
 Route::resource('tags', TagController::class)->only(['index', 'show']);
